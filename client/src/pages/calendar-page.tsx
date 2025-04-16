@@ -9,7 +9,7 @@ import { Plus, ArrowLeft } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
 export default function CalendarPage() {
-  const [location, navigate] = useLocation();
+  const [location, setLocation] = useLocation();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [editScheduleId, setEditScheduleId] = useState<number | null>(null);
@@ -48,7 +48,7 @@ export default function CalendarPage() {
     
     // Clear the edit parameter from URL if it exists
     if (window.location.search.includes("edit=")) {
-      navigate("/calendar");
+      setLocation("/calendar");
     }
   };
   
