@@ -1,0 +1,248 @@
+Project Specifications: GymTrackr (Working Title)
+
+Version: 1.0
+Date: April 16, 2025
+
+1. Introduction
+
+This document outlines the specifications for "GymTrackr", a web application designed for individuals to log their weightlifting workouts, track their progress over time, and schedule future training sessions. The application will be built using the MERN stack (MongoDB, Express.js, React.js, Node.js).
+
+2. Goals and Objectives
+
+Primary Goal: To provide users with a simple and effective tool to record gym workouts, visualize strength progression, and plan their training schedule.
+
+Objective 1: Develop a user-friendly interface for inputting lift details (exercise name, sets, reps, weight).
+
+Objective 2: Implement a reporting feature that visualizes lift performance trends over various timeframes (daily, weekly, monthly, yearly).
+
+Objective 3: Create a calendar feature for scheduling workouts, including recurring sessions.
+
+Objective 4: Ensure secure user authentication and data privacy.
+
+Objective 5: Build the application using the MERN stack for a modern, efficient, and scalable solution.
+
+3. Scope
+
+In-Scope:
+
+User account creation, login, and logout.
+
+CRUD (Create, Read, Update, Delete) operations for workout logs.
+
+Storing lift name, date, sets, reps per set, and weight per set.
+
+A reporting dashboard to view progress for selected lifts over specified time periods (Day, Week, Month, Year). Visualization will likely include metrics like max weight lifted, total volume (sets * reps * weight), or estimated 1 Rep Max (e1RM) trends.
+
+A calendar interface for viewing and scheduling workouts.
+
+Functionality to mark scheduled workouts as recurring (e.g., every Monday, weekly, bi-weekly, monthly).
+
+Responsive web design for usability on desktop and mobile browsers.
+
+Out-of-Scope (for Version 1.0):
+
+Pre-defined workout programs or templates.
+
+Social features (sharing workouts, following users).
+
+Exercise library with instructions or videos.
+
+Nutrition tracking.
+
+Real-time features (e.g., live workout timers).
+
+Native mobile applications (iOS/Android).
+
+Advanced analytics beyond basic lift progression.
+
+Administrator panel for managing users.
+
+4. Target Audience
+
+Individuals who engage in weightlifting or strength training.
+
+Users looking for a digital alternative to traditional workout notebooks.
+
+Fitness enthusiasts wanting to track their strength gains visually.
+
+People needing a tool to help schedule and organize their training routine.
+
+5. Functional Requirements
+
+FR1: User Authentication
+
+FR1.1: Users must be able to register for a new account using an email address and password.
+
+FR1.2: Passwords must be securely hashed before storing.
+
+FR1.3: Users must be able to log in using their registered credentials.
+
+FR1.4: Users must be able to log out of their account.
+
+FR1.5: User sessions must be managed securely (e.g., using JWT or sessions).
+
+(Optional FR1.6): Implement a "Forgot Password" feature.
+
+FR2: Workout Logging
+
+FR2.1: Users must be able to create a new workout entry for a specific date.
+
+FR2.2: Users must be able to input the name of the lift performed (e.g., "Bench Press", "Squat", "Deadlift"). The system should allow adding new lift names or selecting from previously used ones.
+
+FR2.3: For each lift, users must be able to input multiple sets.
+
+FR2.4: For each set, users must be able to input the number of repetitions performed.
+
+FR2.5: For each set, users must be able to input the weight lifted.
+
+FR2.6: The system must save the workout entry associated with the logged-in user and the selected date.
+
+FR2.7: Users must be able to view their past workout entries, filterable/sortable by date or lift name.
+
+FR2.8: Users must be able to edit existing workout entries.
+
+FR2.9: Users must be able to delete existing workout entries.
+
+FR3: Progress Tracking & Reporting
+
+FR3.1: Users must be able to select a specific lift they have logged.
+
+FR3.2: Users must be able to select a time frame for the report: Day (shows logs for that specific day), Week, Month, Year.
+
+FR3.3: The system must generate a report visualizing the user's performance for the selected lift over the chosen timeframe.
+
+Example Visualizations: Line chart showing maximum weight lifted per workout session, bar chart showing total volume per session, chart showing estimated 1RM progression.
+
+FR3.4: The report must clearly label axes and data points.
+
+FR3.5: The report should indicate periods of improvement or decline based on the chosen metric.
+
+FR4: Workout Scheduling (Calendar)
+
+FR4.1: Users must be able to view a calendar interface (e.g., monthly view).
+
+FR4.2: Users must be able to select a date on the calendar to schedule a workout or specific lift(s).
+
+FR4.3: Users must be able to add details to the scheduled event (e.g., "Leg Day", "Bench Press Focus").
+
+FR4.4: Users must be able to mark a scheduled workout as recurring.
+
+FR4.5: Recurring options must include:
+
+Daily
+
+Weekly (on specific days, e.g., every Monday and Thursday)
+
+Bi-Weekly
+
+Monthly (on a specific date or day, e.g., the 15th or the third Friday)
+
+FR4.6: The calendar must display scheduled workouts, including recurring ones.
+
+FR4.7: Users must be able to edit or delete scheduled workouts (option to delete a single instance or the entire recurring series).
+
+(Optional FR4.8): Ability to mark a scheduled workout as 'completed', potentially linking it to create a new workout log entry pre-filled with the date and planned lifts.
+
+6. Non-Functional Requirements
+
+NFR1: Performance:
+
+The application should load quickly (pages load within 3 seconds).
+
+Database queries for logging and reporting should be optimized for speed, even with a large amount of user data.
+
+NFR2: Scalability:
+
+The application architecture should allow for future increases in users and data volume without significant performance degradation.
+
+NFR3: Security:
+
+Implement standard web security practices (e.g., protection against XSS, CSRF, NoSQL injection).
+
+Secure API endpoints, requiring authentication for accessing user-specific data.
+
+Use HTTPS for all communication.
+
+NFR4: Usability:
+
+The user interface must be intuitive and easy to navigate.
+
+The design should be clean and visually appealing.
+
+The application must be responsive and function correctly on common desktop and mobile web browsers (Chrome, Firefox, Safari, Edge).
+
+NFR5: Reliability:
+
+The application should be available with minimal downtime.
+
+Implement graceful error handling for both client-side and server-side issues.
+
+NFR6: Maintainability:
+
+Code should be well-commented, follow consistent coding standards, and be organized logically.
+
+Utilize version control (Git).
+
+7. Technical Specifications
+
+Frontend: React.js (potentially with a UI library like Material UI, Ant Design, or Chakra UI), State Management (Context API or Redux/Zustand).
+
+Backend: Node.js, Express.js.
+
+Database: MongoDB (using Mongoose ODM for data modeling).
+
+API: RESTful API design principles.
+
+Authentication: JSON Web Tokens (JWT) recommended.
+
+Deployment: Cloud platform (e.g., Heroku, AWS Elastic Beanstalk, Vercel, Netlify, Google Cloud Platform).
+
+Version Control: Git (repository hosted on GitHub, GitLab, or Bitbucket).
+
+Charting Library (Frontend): A library like Chart.js, Recharts, or Nivo for data visualization.
+
+Calendar Library (Frontend): A library like react-big-calendar, react-calendar, or FullCalendar.
+
+8. UI/UX Considerations
+
+Dashboard: A central dashboard view summarizing recent activity, upcoming scheduled workouts, and perhaps quick access to logging or reports.
+
+Input Forms: Design clear and efficient forms for logging workout data. Consider auto-suggestions for lift names.
+
+Data Visualization: Choose chart types that best represent progress (e.g., line charts for trends over time). Ensure charts are interactive and readable on different screen sizes.
+
+Calendar: Provide clear visual cues for scheduled days. Make adding and editing events straightforward.
+
+Mobile Responsiveness: Prioritize a design that adapts seamlessly to smaller screens.
+
+9. Deployment Strategy (High-Level)
+
+Separate deployment for frontend (e.g., Netlify, Vercel) and backend/API (e.g., Heroku, AWS).
+
+Managed MongoDB service (e.g., MongoDB Atlas).
+
+Continuous Integration/Continuous Deployment (CI/CD) pipeline setup is recommended.
+
+10. Future Enhancements (Post V1.0)
+
+1 Rep Max (1RM) calculators and tracking.
+
+Adding notes or comments to workout sets or sessions.
+
+Body measurement tracking (weight, body fat %, etc.).
+
+Export workout data feature.
+
+More advanced reporting and filtering options.
+
+Integration with wearable devices (if feasible APIs exist).
+
+Offline support (Progressive Web App - PWA features).
+
+11. Assumptions and Constraints
+
+Users require an internet connection to use the web application.
+
+The development team is proficient in the MERN stack.
+
+The scope is limited to the features defined above for Version 1.0.
